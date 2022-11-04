@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FloatyBox : MonoBehaviour
 {
+    Rigidbody2D _rigidbody;
     // Start is called before  the first frame update
     void Start()
     {
