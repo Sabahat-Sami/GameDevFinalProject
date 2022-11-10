@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 swipe;
     private float swipe_length = 70f;
 
-    float jumpForce = 300f;
+    float jumpForce = 400f;
 
     void Start()
     {
