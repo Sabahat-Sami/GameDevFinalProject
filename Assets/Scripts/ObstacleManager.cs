@@ -10,7 +10,7 @@ public class ObstacleManager : MonoBehaviour
     private int obstacleChooser;
 
     private bool canGenerate = true;
-    private float spawnTime = 4f;
+    private float spawnTime;
 
 
 
@@ -22,6 +22,13 @@ public class ObstacleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(PublicVars.speed);
+        spawnTime = .75f / PublicVars.speed;
+        if(spawnTime > 4f)
+        {
+            spawnTime = 4f;
+        }
+
         if(canGenerate){
             canGenerate = false;
             StartCoroutine(GenerateObstacle());
@@ -47,7 +54,6 @@ public class ObstacleManager : MonoBehaviour
     void genWall()
     {
         Vector2 location = new Vector2(transform.position.x, Random.Range(-2f, 5f));
-        print(location);
         GameObject wall = Instantiate(walls, location, Quaternion.identity);
     }
 }
