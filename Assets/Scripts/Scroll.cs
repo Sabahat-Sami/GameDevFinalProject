@@ -17,7 +17,7 @@ public class Scroll : MonoBehaviour
 
     void Update()
     {   
-        if(PublicVars.speed < .75f && PublicVars.speed !=0f)
+        if(PublicVars.speed < 0.75f && PublicVars.speed !=0f)
         {
             PublicVars.speed = PublicVars.speed + PublicVars.accel;
         }

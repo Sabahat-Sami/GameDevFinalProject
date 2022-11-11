@@ -6,8 +6,10 @@ public class ObstacleManager : MonoBehaviour
 {
     public GameObject walls;
     public GameObject slowers;
+    public GameObject grounds;
 
-    private int numOfObstacles = 2;
+    private int numOfGrounds;
+    private int numOfObstacles = 3;
     private int obstacleChooser;
 
     private bool canGenerate = true;
@@ -23,7 +25,12 @@ public class ObstacleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(PublicVars.speed);
+        // print(PublicVars.speed);
+        numOfGrounds = GameObject.FindGameObjectsWithTag("ground").Length;
+        print("num of grounds " + numOfGrounds);
+        if(numOfGrounds < 2){
+            genGround();
+        }
         spawnTime = .75f / PublicVars.speed;
         if(spawnTime > 4f)
         {
@@ -72,6 +79,12 @@ public class ObstacleManager : MonoBehaviour
         float newSize = Random.Range(1f, 2.51f);
         wall.transform.localScale = new Vector2(wall.transform.localScale.x, newSize);
         wall.transform.position = new Vector2(wall.transform.position.x, location.y + (newSize - 1.5f)/2f);
+    }
+
+    void genGround()
+    {
+        Vector2 location = new Vector2(transform.position.x - Random.Range(1f, 3f), -3.176f);
+        GameObject ground = Instantiate(grounds, location, Quaternion.identity);
     }
 }
 
