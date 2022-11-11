@@ -5,8 +5,9 @@ using UnityEngine;
 public class ObstacleManager : MonoBehaviour
 {
     public GameObject walls;
+    public GameObject slowers;
 
-    private int numOfObstacles = 1;
+    private int numOfObstacles = 2;
     private int obstacleChooser;
 
     private bool canGenerate = true;
@@ -43,6 +44,10 @@ public class ObstacleManager : MonoBehaviour
         {
             //Wall Gen
             case 1:
+                genSlower();
+                break;
+            //Wall Gen
+            case 2:
                 genWall();
                 break;
         }
@@ -51,10 +56,22 @@ public class ObstacleManager : MonoBehaviour
         canGenerate = true;
     }
 
+    void genSlower()
+    {
+        Vector2 location = new Vector2(transform.position.x, Random.Range(-1f, 4.5f));
+        GameObject slower = Instantiate(slowers, location, Quaternion.identity);
+    }
+
     void genWall()
     {
-        Vector2 location = new Vector2(transform.position.x, Random.Range(-2f, 5f));
+        //Max height 2.5
+        //Min height 1
+        //Wall default size = 1.5
+        Vector2 location = new Vector2(transform.position.x, -2.2f);
         GameObject wall = Instantiate(walls, location, Quaternion.identity);
+        float newSize = Random.Range(1f, 2.51f);
+        wall.transform.localScale = new Vector2(wall.transform.localScale.x, newSize);
+        wall.transform.position = new Vector2(wall.transform.position.x, location.y + (newSize - 1.5f)/2f);
     }
 }
 
