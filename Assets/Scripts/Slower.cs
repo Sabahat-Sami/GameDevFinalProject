@@ -22,6 +22,7 @@ public class Slower : MonoBehaviour
         if(other.tag == "Player")
         {
             PublicVars.speed = PublicVars.speed/2;
+            other.GetComponent<PlayerCombat>().takeHit();
         }
     }
 }
