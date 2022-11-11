@@ -20,6 +20,6 @@ public class PlayerCombat : MonoBehaviour
     }
 
     public void takeHit(){
-        print("HIT");
+        enemy.transform.position = Vector2.Lerp(enemy.transform.position, transform.position/2, Time.deltaTime);
     }
 }
