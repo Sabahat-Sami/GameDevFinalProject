@@ -27,7 +27,6 @@ public class ObstacleManager : MonoBehaviour
     {
         // print(PublicVars.speed);
         numOfGrounds = GameObject.FindGameObjectsWithTag("ground").Length;
-        print("num of grounds " + numOfGrounds);
         if(numOfGrounds < 2){
             genGround();
         }
