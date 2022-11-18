@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
         PublicVars.canAccel = true;
         PublicVars.accel = .0002f;
         PublicVars.image_offset = 21.62746f;
-        PublicVars.maxScore = 0;
         PublicVars.scoreAdder = 1;
         PublicVars.maxAirJumps = 0;
         PublicVars.currScore = 0;
