@@ -35,11 +35,12 @@ public class PlayerMovement : MonoBehaviour
         PublicVars.scoreAdder = 1;
         PublicVars.maxAirJumps = 0;
         PublicVars.currScore = 0;
+
     }
 
     void Update()
     {
-        grounded = Physics2D.OverlapCircle(feetTrans.position, .1f, groundLayer);
+        grounded = Physics2D.OverlapCircle(feetTrans.position, .2f, groundLayer);
 
         if(Input.touchCount == 1){
             Touch touch = Input.GetTouch(0);
@@ -110,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmosSelected()
         {
-            Gizmos.DrawWireSphere(feetTrans.position, .1f);
+            Gizmos.DrawWireSphere(feetTrans.position, .2f);
         }
 
 }
