@@ -5,7 +5,8 @@ using UnityEngine;
 public class ScoreMultiplier : MonoBehaviour
 {
 
-    public void Update() {
+    void Update()
+    {
         Vector2 newPos = transform.position;
         newPos.x -= PublicVars.objectSpeed;
         transform.position = newPos;
@@ -21,5 +22,6 @@ public class ScoreMultiplier : MonoBehaviour
         PublicVars.scoreAdder = 500;
         yield return new WaitForSeconds(5f);
         PublicVars.scoreAdder = 100;
+        Destroy(this.gameObject);
     }
 }
