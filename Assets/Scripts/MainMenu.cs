@@ -10,8 +10,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("EndlessRunner");
     }
 
-    public void Demo2()
+    public void Quit()
     {
-        SceneManager.LoadScene("Demo2");
+        Application.Quit();
     }
 }
