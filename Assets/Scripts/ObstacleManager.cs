@@ -29,7 +29,7 @@ public class ObstacleManager : MonoBehaviour
     void Update()
     {
         // print(PublicVars.speed);
-        numOfGrounds = GameObject.FindGameObjectsWithTag("ground").Length;
+        numOfGrounds = GameObject.FindGameObjectsWithTag("Ground").Length;
         if(numOfGrounds < 2){
             genGround();
         }
