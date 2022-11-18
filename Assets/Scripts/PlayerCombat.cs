@@ -32,12 +32,15 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //print(canHeal);
         if(recoveryTimerRunning == false && canHeal == false){
+            print("Start");
             recoveryTimerRunning = true;
             StartCoroutine(recoveryTimer);
         }
         if(canHeal == true && currPos != startPos){
             canHeal = false;
+            print("RECOVERING");
             StartCoroutine(recover());
         }
     }

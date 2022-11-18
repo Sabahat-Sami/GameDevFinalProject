@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class ScoreMultiplier : MonoBehaviour
 {
-     AudioSource _audioSource;
 
-    public AudioClip pickUp;
-
-    void Start(){
-        _audioSource = GetComponent<AudioSource>();
-    }
     void Update()
     {
         Vector2 newPos = transform.position;
@@ -19,7 +13,6 @@ public class ScoreMultiplier : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
-            _audioSource.PlayOneShot(pickUp);
             StartCoroutine(multiplyScore());
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<Renderer>().enabled = false;
