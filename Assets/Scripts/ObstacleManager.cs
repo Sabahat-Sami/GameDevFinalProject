@@ -24,6 +24,7 @@ public class ObstacleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Random.InitState((int)(System.DateTime.Now.Ticks));
     }
 
     // Update is called once per frame
@@ -97,9 +98,7 @@ public class ObstacleManager : MonoBehaviour
 
     void genGround()
     {
-        var temp = transform.position.x - Random.Range(2f, 4f);
-        print(temp);
-        Vector2 location = new Vector2(temp, -3.176f);
+        Vector2 location = new Vector2(transform.position.x - Random.Range(4f, 6f), -3.176f);
         GameObject ground = Instantiate(grounds, location, Quaternion.identity);
     }
 

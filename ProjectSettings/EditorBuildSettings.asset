@@ -11,12 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
-  - enabled: 1
-    path: Assets/Scenes/Demo1.unity
-    guid: 1445c2bf914ff4591b81c76f7f5b2c2b
-  - enabled: 1
-    path: Assets/Scenes/Demo2.unity
-    guid: b523b00c27fc94c078d8e69e74b6d9af
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/EndlessRunner.unity
     guid: d8ccaa06f60185246b000958870c99cc
