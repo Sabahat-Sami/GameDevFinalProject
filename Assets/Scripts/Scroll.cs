@@ -18,10 +18,8 @@ public class Scroll : MonoBehaviour
 
     void Update()
     {   
-        print(PublicVars.canAccel);
         if(PublicVars.speed < 0.75f && PublicVars.speed !=0f && PublicVars.canAccel == true)
         {
-            print(PublicVars.speed);
             PublicVars.speed = PublicVars.speed + PublicVars.accel;
         }
         PublicVars.objectSpeed = PublicVars.speed * PublicVars.image_offset * Time.deltaTime;
