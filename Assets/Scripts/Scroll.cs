@@ -18,11 +18,11 @@ public class Scroll : MonoBehaviour
 
     void Update()
     {   
-        if(PublicVars.speed < 0.75f && PublicVars.speed !=0f)
+        if(PublicVars.speed < 0.75f && PublicVars.speed !=0f && PublicVars.canAccel == true)
         {
             PublicVars.speed = PublicVars.speed + PublicVars.accel;
-            PublicVars.objectSpeed = PublicVars.speed * PublicVars.image_offset * Time.deltaTime;
         }
+        PublicVars.objectSpeed = PublicVars.speed * PublicVars.image_offset * Time.deltaTime;
         //_renderer.material.mainTextureOffset += new Vector2(1, 0) * PublicVars.speed * Time.deltaTime;
         
         _mat.mainTextureOffset += new Vector2(1, 0) * PublicVars.speed * Time.deltaTime;
