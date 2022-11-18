@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    public void Demo1()
+    public void EndlessRunner()
     {
-        SceneManager.LoadScene("Demo1");
+        SceneManager.LoadScene("EndlessRunner");
     }
 
     public void Demo2()
