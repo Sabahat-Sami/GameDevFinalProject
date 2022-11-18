@@ -77,10 +77,16 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.AddForce(new Vector2(0,-800f));
     }
 
+    public void increaseJump()
+    {
+        airjumps++;
+    }
+
     private void OnDrawGizmosSelected()
         {
             Gizmos.DrawWireSphere(feetTrans.position, .1f);
-        }    
+        }
+
 }
 
     
