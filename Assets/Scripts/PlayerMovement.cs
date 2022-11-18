@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     float score;
     float jumpForce = 400f;
 
+    public Transform feetTrans;
+    public LayerMask groundLayer;
+    bool grounded;
+    int airjumps = 0;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -21,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        grounded = Physics2D.OverlapCircle(feetTrans.position, .1f, groundLayer);
+
         if(Input.touchCount == 1){
             Touch touch = Input.GetTouch(0);
 
@@ -35,7 +42,16 @@ public class PlayerMovement : MonoBehaviour
                 swipe = new Vector2(lastTouch.x - firstTouch.x, lastTouch.y - firstTouch.y);
                 if(swipe.magnitude < swipe_length){
                     //Touch
-                    Jump();
+                    if(grounded)
+                    {
+                        airjumps = PublicVars.maxAirJumps;
+                        Jump();
+                    }
+                    else if(airjumps > 0)
+                    {
+                        airjumps--;
+                        Jump();
+                    }
                 }
                 else if(swipe.y <0)
                 {
@@ -60,4 +76,17 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(new Vector2(0,-800f));
     }
+
+    public void increaseJump()
+    {
+        airjumps++;
+    }
+
+    private void OnDrawGizmosSelected()
+        {
+            Gizmos.DrawWireSphere(feetTrans.position, .1f);
+        }
+
 }
+
+    

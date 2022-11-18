@@ -10,9 +10,10 @@ public class ObstacleManager : MonoBehaviour
 
     public GameObject scoreMultipliers;
     public GameObject timeSlowers;
+    public GameObject doubleJumps;
 
     private int numOfGrounds;
-    private int numOfObstacles = 4;
+    private int numOfObstacles = 5;
     private int obstacleChooser;
 
     private bool canGenerate = true;
@@ -29,7 +30,7 @@ public class ObstacleManager : MonoBehaviour
     void Update()
     {
         // print(PublicVars.speed);
-        numOfGrounds = GameObject.FindGameObjectsWithTag("ground").Length;
+        numOfGrounds = GameObject.FindGameObjectsWithTag("Ground").Length;
         if(numOfGrounds < 2){
             genGround();
         }
@@ -66,6 +67,9 @@ public class ObstacleManager : MonoBehaviour
             //Time slower powerup
             case 4:
                 genTimeSlower();
+                break;
+            case 5:
+                genDoubleJump();
                 break;
         }
 
@@ -107,6 +111,12 @@ public class ObstacleManager : MonoBehaviour
     {
         Vector2 location = new Vector2(transform.position.x, 0f);
         GameObject scoreMultiplier =  Instantiate(scoreMultipliers, location, Quaternion.identity);
+    }
+
+    void genDoubleJump()
+    {
+        Vector2 location = new Vector2(transform.position.x, 0f);
+        GameObject doubleJump =  Instantiate(doubleJumps, location, Quaternion.identity);
     }
 }
 

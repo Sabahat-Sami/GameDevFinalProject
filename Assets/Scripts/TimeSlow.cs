@@ -30,7 +30,14 @@ public class TimeSlow : MonoBehaviour
     IEnumerator SlowTime()
     {
         PublicVars.canAccel = false;
-        PublicVars.speed = PublicVars.speed/2;
+        if(PublicVars.speed/2 < .1f)
+        {
+            PublicVars.speed = .1f;
+        }
+        else
+        {
+            PublicVars.speed = PublicVars.speed/2;
+        }
         yield return new WaitForSeconds(5f);
         PublicVars.canAccel = true;
         Destroy(this.gameObject);
