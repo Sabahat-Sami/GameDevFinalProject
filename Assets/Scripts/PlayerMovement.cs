@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D _rigidbody;
@@ -10,18 +10,25 @@ public class PlayerMovement : MonoBehaviour
     Vector2 lastTouch;
     Vector2 swipe;
     private float swipe_length = 70f;
-    float score;
     float jumpForce = 400f;
 
     public Transform feetTrans;
     public LayerMask groundLayer;
     bool grounded;
     int airjumps = 0;
-
+    public TextMeshProUGUI currScoreText;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        score = 0;
+        PublicVars.speed = .1f;
+        PublicVars.objectSpeed = 0f;
+        PublicVars.canAccel = true;
+        PublicVars.accel = .0002f;
+        PublicVars.image_offset = 21.62746f;
+        PublicVars.maxScore = 0;
+        PublicVars.scoreAdder = 1;
+        PublicVars.maxAirJumps = 0;
+        PublicVars.currScore = 0;
     }
 
     void Update()
@@ -60,12 +67,23 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        if(PublicVars.speed != 0){
-            score += PublicVars.scoreAdder;
-        }
+        StartCoroutine(AddScore());
+        currScoreText.text = "Score: " + PublicVars.currScore;
         //print(score);
     }
 
+    IEnumerator AddScore() 
+    {
+        if(PublicVars.speed != 0){
+            PublicVars.currScore += PublicVars.scoreAdder;
+        }
+        else {
+            if(PublicVars.currScore > PublicVars.maxScore){
+                PublicVars.maxScore = PublicVars.currScore;
+            }
+        }
+        yield return new WaitForSeconds(2f);
+    }
     void Jump()
     {
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
