@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ScoreMultiplier : MonoBehaviour
 {
+
+    public void Update() {
+        Vector2 newPos = transform.position;
+        newPos.x -= PublicVars.objectSpeed;
+        transform.position = newPos;
+    }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
             StartCoroutine(multiplyScore());
