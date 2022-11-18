@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScoreMultiplier : MonoBehaviour
 {
+
     void Update()
     {
         Vector2 newPos = transform.position;
@@ -13,7 +14,7 @@ public class ScoreMultiplier : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
             StartCoroutine(multiplyScore());
-            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<Renderer>().enabled = false;
         }
     }
