@@ -97,7 +97,9 @@ public class ObstacleManager : MonoBehaviour
 
     void genGround()
     {
-        Vector2 location = new Vector2(transform.position.x - Random.Range(1f, 3f), -3.176f);
+        var temp = transform.position.x - Random.Range(2f, 4f);
+        print(temp);
+        Vector2 location = new Vector2(temp, -3.176f);
         GameObject ground = Instantiate(grounds, location, Quaternion.identity);
     }
 
