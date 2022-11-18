@@ -17,8 +17,14 @@ public class PlayerMovement : MonoBehaviour
     bool grounded;
     int airjumps = 0;
     public TextMeshProUGUI currScoreText;
+
+    AudioSource _audioSource;
+
+    public AudioClip jumpSound;
+
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _rigidbody = GetComponent<Rigidbody2D>();
         PublicVars.speed = .1f;
         PublicVars.objectSpeed = 0f;
@@ -29,11 +35,12 @@ public class PlayerMovement : MonoBehaviour
         PublicVars.scoreAdder = 1;
         PublicVars.maxAirJumps = 0;
         PublicVars.currScore = 0;
+
     }
 
     void Update()
     {
-        grounded = Physics2D.OverlapCircle(feetTrans.position, .1f, groundLayer);
+        grounded = Physics2D.OverlapCircle(feetTrans.position, .2f, groundLayer);
 
         if(Input.touchCount == 1){
             Touch touch = Input.GetTouch(0);
@@ -86,8 +93,10 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jump()
     {
+        _audioSource.PlayOneShot(jumpSound);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(new Vector2(0, jumpForce));
+
     }
     void Down()
     {
@@ -102,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmosSelected()
         {
-            Gizmos.DrawWireSphere(feetTrans.position, .1f);
+            Gizmos.DrawWireSphere(feetTrans.position, .2f);
         }
 
 }
