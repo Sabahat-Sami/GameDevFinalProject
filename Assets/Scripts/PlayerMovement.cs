@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         if(PublicVars.speed != 0){
             score += PublicVars.scoreAdder;
         }
-        print(score);
+        //print(score);
     }
 
     void Jump()

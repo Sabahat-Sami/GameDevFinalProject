@@ -7,9 +7,12 @@ public class ObstacleManager : MonoBehaviour
     public GameObject walls;
     public GameObject slowers;
     public GameObject grounds;
+
     public GameObject scoreMultipliers;
+    public GameObject timeSlowers;
+
     private int numOfGrounds;
-    private int numOfObstacles = 3;
+    private int numOfObstacles = 4;
     private int obstacleChooser;
 
     private bool canGenerate = true;
@@ -60,6 +63,10 @@ public class ObstacleManager : MonoBehaviour
             case 3:
                 genScoreMultiplier();
                 break;
+            //Time slower powerup
+            case 4:
+                genTimeSlower();
+                break;
         }
 
         yield return new WaitForSeconds(spawnTime);
@@ -72,11 +79,6 @@ public class ObstacleManager : MonoBehaviour
         GameObject slower = Instantiate(slowers, location, Quaternion.identity);
     }
 
-    void genScoreMultiplier()
-    {
-        Vector2 location = new Vector2(transform.position.x, Random.Range(-1f, 4.5f));
-        GameObject scoreMultiplier =  Instantiate(scoreMultipliers, location, Quaternion.identity);
-    }
     void genWall()
     {
         //Max height 2.5
@@ -93,6 +95,18 @@ public class ObstacleManager : MonoBehaviour
     {
         Vector2 location = new Vector2(transform.position.x - Random.Range(1f, 3f), -3.176f);
         GameObject ground = Instantiate(grounds, location, Quaternion.identity);
+    }
+
+    void genTimeSlower()
+    {
+        Vector2 location = new Vector2(transform.position.x, 0f);
+        GameObject timeSlower = Instantiate(timeSlowers, location, Quaternion.identity);
+    }
+
+    void genScoreMultiplier()
+    {
+        Vector2 location = new Vector2(transform.position.x, 0f);
+        GameObject scoreMultiplier =  Instantiate(scoreMultipliers, location, Quaternion.identity);
     }
 }
 

@@ -22,7 +22,8 @@ public class TimeSlow : MonoBehaviour
         if(other.tag == "Player")
         {
             StartCoroutine(SlowTime());
-            Destroy(this.gameObject);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<Renderer>().enabled = false;
         }
     }
 
@@ -31,7 +32,8 @@ public class TimeSlow : MonoBehaviour
         PublicVars.canAccel = false;
         PublicVars.speed = PublicVars.speed/2;
         yield return new WaitForSeconds(5f);
-        PublicVars.canAccel = false;
+        PublicVars.canAccel = true;
+        Destroy(this.gameObject);
 
     }
 
