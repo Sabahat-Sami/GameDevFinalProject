@@ -13,6 +13,8 @@ public class ScoreMultiplier : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
             StartCoroutine(multiplyScore());
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<Renderer>().enabled = false;
         }
     }
     IEnumerator multiplyScore(){
