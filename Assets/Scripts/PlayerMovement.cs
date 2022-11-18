@@ -17,8 +17,14 @@ public class PlayerMovement : MonoBehaviour
     bool grounded;
     int airjumps = 0;
     public TextMeshProUGUI currScoreText;
+
+    AudioSource _audioSource;
+
+    public AudioClip jumpSound;
+
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _rigidbody = GetComponent<Rigidbody2D>();
         PublicVars.speed = .1f;
         PublicVars.objectSpeed = 0f;
@@ -86,8 +92,10 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jump()
     {
+        _audioSource.PlayOneShot(jumpSound);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(new Vector2(0, jumpForce));
+
     }
     void Down()
     {

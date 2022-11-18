@@ -18,4 +18,8 @@ public class DeathScreen : MonoBehaviour
     public void EndlessRunner() {
         SceneManager.LoadScene("EndlessRunner");
     }
+
+    public void QuitGame() {
+        Application.Quit();
+    }
 }
