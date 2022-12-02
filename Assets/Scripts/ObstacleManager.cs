@@ -13,8 +13,11 @@ public class ObstacleManager : MonoBehaviour
     public GameObject doubleJumps;
 
     private int numOfGrounds;
-    private int numOfObstacles = 5;
+    private int numOfObstacles = 2;
+    private int numOfPowerups = 3;
     private int obstacleChooser;
+    private int powerupChooser;
+    private int powerupChance;
 
     private bool canGenerate = true;
     private float spawnTime;
@@ -50,29 +53,43 @@ public class ObstacleManager : MonoBehaviour
 
     IEnumerator GenerateObstacle()
     {
-        obstacleChooser = Random.Range(1,numOfObstacles+1);
-        switch (obstacleChooser)
+        powerupChance = Random.Range(1, 6);
+
+        if(powerupChance == 1)
         {
-            //Wall Gen
-            case 1:
-                genSlower();
-                break;
-            //Wall Gen
-            case 2:
-                genWall();
-                break;
-            //Score Multiplier Gen
-            case 3:
-                genScoreMultiplier();
-                break;
-            //Time slower powerup
-            case 4:
-                genTimeSlower();
-                break;
-            case 5:
-                genDoubleJump();
-                break;
+            powerupChooser = Random.Range(1,numOfPowerups+1);
+            switch (powerupChooser)
+            {
+                //Score Multiplier Gen
+                case 1:
+                    genScoreMultiplier();
+                    break;
+                //Time slower powerup
+                case 2:
+                    genTimeSlower();
+                    break;
+                case 3:
+                    genDoubleJump();
+                    break;
+            }
         }
+
+        else
+        {
+            obstacleChooser = Random.Range(1,numOfObstacles+1);
+            switch (obstacleChooser)
+            {
+                //Wall Gen
+                case 1:
+                    genSlower();
+                    break;
+                //Wall Gen
+                case 2:
+                    genWall();
+                    break;
+            }
+        }
+
 
         yield return new WaitForSeconds(spawnTime);
         canGenerate = true;
