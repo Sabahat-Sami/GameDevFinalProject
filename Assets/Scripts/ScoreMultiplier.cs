@@ -26,7 +26,7 @@ public class ScoreMultiplier : MonoBehaviour
         }
     }
     IEnumerator multiplyScore(){
-        PublicVars.scoreAdder = 500;
+        PublicVars.scoreAdder = 300;
         yield return new WaitForSeconds(5f);
         PublicVars.scoreAdder = 100;
         Destroy(this.gameObject);
