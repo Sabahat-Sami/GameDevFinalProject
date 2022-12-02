@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayAgain.unity
     guid: b62098d885f68524c85e40e8f031499f
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreen.unity
+    guid: 58ccc7215a7933941883de7e4505a787
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 0149ff8e9dad34311ab5124daa73bc59, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b9a1e484c12b04f52ab8793859fa0bbe, type: 2}
