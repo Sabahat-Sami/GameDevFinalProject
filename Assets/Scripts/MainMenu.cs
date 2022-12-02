@@ -10,6 +10,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("EndlessRunner");
     }
 
+    public void About()
+    {
+        SceneManager.LoadScene("LoadingScreen");
+    }
     public void Quit()
     {
         Application.Quit();
