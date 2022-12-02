@@ -11,7 +11,7 @@ public static class PublicVars
     public static float image_offset = 21.62746f;
     public static float maxScore = 0;
     public static float scoreAdder = 1;
-    public static int maxAirJumps = 0;
+    public static int maxAirJumps = 1;
 
     public static float currScore = 0;
 }

@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetTrans;
     public LayerMask groundLayer;
     bool grounded;
-    int airjumps = 0;
+    bool justJumped = false;
+    int airjumps = 1;
     public TextMeshProUGUI currScoreText;
 
     AudioSource _audioSource;
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         PublicVars.accel = .0002f;
         PublicVars.image_offset = 21.62746f;
         PublicVars.scoreAdder = 1;
-        PublicVars.maxAirJumps = 0;
+        PublicVars.maxAirJumps = 1;
         PublicVars.currScore = 0;
 
     }
@@ -40,6 +41,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         grounded = Physics2D.OverlapCircle(feetTrans.position, .2f, groundLayer);
+        if(grounded && justJumped == false)
+        {
+            print("grounded"+PublicVars.maxAirJumps);
+            airjumps = PublicVars.maxAirJumps;
+        }
 
         if(Input.touchCount == 1){
             Touch touch = Input.GetTouch(0);
@@ -55,15 +61,14 @@ public class PlayerMovement : MonoBehaviour
                 swipe = new Vector2(lastTouch.x - firstTouch.x, lastTouch.y - firstTouch.y);
                 if(swipe.magnitude < swipe_length){
                     //Touch
-                    if(grounded)
+                    if(airjumps > 0)
                     {
-                        airjumps = PublicVars.maxAirJumps;
-                        Jump();
-                    }
-                    else if(airjumps > 0)
-                    {
+                        print("Run" + airjumps);
                         airjumps--;
+                        print("Run" + airjumps);
                         Jump();
+                        justJumped = true;
+                        StartCoroutine(JumpCooldown());
                     }
                 }
                 else if(swipe.y <0)
@@ -78,6 +83,12 @@ public class PlayerMovement : MonoBehaviour
         //print(score);
     }
 
+    IEnumerator JumpCooldown()
+    {
+        yield return new WaitForSeconds(.1f);
+        justJumped = false;
+        
+    }
     IEnumerator AddScore() 
     {
         if(PublicVars.speed != 0){
