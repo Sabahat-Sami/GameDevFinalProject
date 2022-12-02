@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     AudioSource _audioSource;
 
     public AudioClip jumpSound;
+    public AudioClip fallSound;
 
     void Start()
     {
@@ -107,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Down()
     {
+        _audioSource.PlayOneShot(fallSound, .5f);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(new Vector2(0,-800f));
     }
