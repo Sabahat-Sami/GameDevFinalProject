@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void EndlessRunner()
     {
+        Destroy(GameObject.FindGameObjectWithTag("Music"));
         SceneManager.LoadScene("EndlessRunner");
     }
 
@@ -17,5 +18,10 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void AboutBack()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

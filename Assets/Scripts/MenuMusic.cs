@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MenuMusic : MonoBehaviour
 {
-    AudioSource _audioSource;
-    public AudioClip menuMusic;
-
-    private void Start() {
-        
+    void Awake() {
+        DontDestroyOnLoad(transform.gameObject);
+        // check if another music player exists
+        if (FindObjectsOfType(GetType()).Length > 1) {
+            Destroy(gameObject);
+        }
     }
-
 }
