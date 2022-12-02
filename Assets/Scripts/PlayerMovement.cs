@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     bool justJumped = false;
     int airjumps = 1;
     public TextMeshProUGUI currScoreText;
+    public TextMeshProUGUI currJumpText;
+    public TextMeshProUGUI scoreMultiplier;
+    public bool canAddScore = true;
 
     AudioSource _audioSource;
 
@@ -33,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         PublicVars.canAccel = true;
         PublicVars.accel = .0002f;
         PublicVars.image_offset = 21.62746f;
-        PublicVars.scoreAdder = 1;
+        PublicVars.scoreAdder = 100;
         PublicVars.maxAirJumps = 1;
         PublicVars.currScore = 0;
 
@@ -44,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics2D.OverlapCircle(feetTrans.position, .2f, groundLayer);
         if(grounded && justJumped == false)
         {
-
             airjumps = PublicVars.maxAirJumps;
+            currJumpText.text = "Jumps: " + airjumps;
         }
 
         if(Input.touchCount == 1){
@@ -65,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
                     if(airjumps > 0)
                     {
                         airjumps--;
+                        currJumpText.text = "Jumps: " + airjumps;
                         Jump();
                         justJumped = true;
                         StartCoroutine(JumpCooldown());
@@ -77,8 +81,20 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        StartCoroutine(AddScore());
+        if(canAddScore == true)
+        {
+            StartCoroutine(AddScore());
+            canAddScore = false;
+        }
         currScoreText.text = "Score: " + PublicVars.currScore;
+        if(PublicVars.scoreAdder == 300)
+        {
+            scoreMultiplier.text = "Score Multiplier X3";
+        }
+        else
+        {
+            scoreMultiplier.text = "";
+        }
     }
 
     IEnumerator JumpCooldown()
@@ -97,7 +113,8 @@ public class PlayerMovement : MonoBehaviour
                 PublicVars.maxScore = PublicVars.currScore;
             }
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.5f);
+        canAddScore = true;
     }
     void Jump()
     {
