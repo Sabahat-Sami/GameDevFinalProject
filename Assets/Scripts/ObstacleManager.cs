@@ -97,7 +97,7 @@ public class ObstacleManager : MonoBehaviour
 
     void genSlower()
     {
-        Vector2 location = new Vector2(transform.position.x, Random.Range(-1f, 4.5f));
+        Vector2 location = new Vector2(transform.position.x, Random.Range(-1f, 2.5f));
         GameObject slower = Instantiate(slowers, location, Quaternion.identity);
     }
 
@@ -115,7 +115,7 @@ public class ObstacleManager : MonoBehaviour
 
     void genGround()
     {
-        Vector2 location = new Vector2(transform.position.x - Random.Range(4f, 6f), -3.176f);
+        Vector2 location = new Vector2(transform.position.x - Random.Range(5f, 6f), -3.176f);
         GameObject ground = Instantiate(grounds, location, Quaternion.identity);
     }
 
