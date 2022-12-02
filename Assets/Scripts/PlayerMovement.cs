@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         grounded = Physics2D.OverlapCircle(feetTrans.position, .2f, groundLayer);
         if(grounded && justJumped == false)
         {
-            print("grounded"+PublicVars.maxAirJumps);
+
             airjumps = PublicVars.maxAirJumps;
         }
 
@@ -63,9 +63,7 @@ public class PlayerMovement : MonoBehaviour
                     //Touch
                     if(airjumps > 0)
                     {
-                        print("Run" + airjumps);
                         airjumps--;
-                        print("Run" + airjumps);
                         Jump();
                         justJumped = true;
                         StartCoroutine(JumpCooldown());
@@ -80,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
         }
         StartCoroutine(AddScore());
         currScoreText.text = "Score: " + PublicVars.currScore;
-        //print(score);
     }
 
     IEnumerator JumpCooldown()
