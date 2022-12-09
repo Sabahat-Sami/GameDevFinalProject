@@ -23,24 +23,30 @@ public class EnemyMovment : MonoBehaviour
     }
     private void FixedUpdate() {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, groundLayer);
-        Debug.DrawRay(transform.position, hit.point, Color.red);
+        Debug.DrawRay(transform.position, -Vector2.up, Color.red);
 
         //Hit ground
-        if(hit != false)
+        if(hit != false && jumping == true && hit.collider.tag == "Ground")
         {
             print(hit.collider.name);
-            //_rigidbody.AddForce(new Vector2(0, -100f));
+            _rigidbody.AddForce(new Vector2(0, -500f));
 
             jumping = false;
         }
 
         //In air
-        else if(hit == true && jumping == false)
+        else if(hit != true && jumping == false)
         {
             print("Nothing");
 
-            _rigidbody.AddForce(new Vector2(0, -800f));
+            _rigidbody.AddForce(new Vector2(0, 200f));
             jumping = true;
+        }
+
+        if(transform.position.y < -2.094079)
+        {
+            Vector2 newPos = new Vector2(transform.position.x, -2.094079f);
+            transform.position = newPos;
         }
     }
 }
