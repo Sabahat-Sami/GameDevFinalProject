@@ -39,5 +39,11 @@ public class Wall : MonoBehaviour
             PublicVars.objectSpeed = 0f;
             StartCoroutine(other.gameObject.GetComponent<PlayerCombat>().Death());
         }
+
+        else if(other.tag == "Enemy")
+        {
+            _audioSource.PlayOneShot(hitWall);
+            spriteRenderer.sprite = newSprite; 
+        }
     }
 }

@@ -22,7 +22,7 @@ public class KillBox : MonoBehaviour
 
     IEnumerator Death()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
         SceneManager.LoadScene("PlayAgain");
     }
 }
