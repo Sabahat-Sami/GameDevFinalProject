@@ -11,7 +11,7 @@ public class ScoreMultiplier : MonoBehaviour
     void Start(){
         _audioSource = GetComponent<AudioSource>();
     }
-    void Update()
+    void FixedUpdate()
     {
         Vector2 newPos = transform.position;
         newPos.x -= PublicVars.objectSpeed;
