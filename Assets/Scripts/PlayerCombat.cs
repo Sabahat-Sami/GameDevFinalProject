@@ -109,4 +109,13 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         SceneManager.LoadScene("PlayAgain");
     }
+
+    private void OnColliderEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Enemy")
+        {
+            PublicVars.speed = 0f;
+            PublicVars.objectSpeed = 0f;
+            StartCoroutine(other.gameObject.GetComponent<PlayerCombat>().Death());
+        }
+    }
 }
