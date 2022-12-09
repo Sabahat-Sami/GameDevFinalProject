@@ -15,7 +15,7 @@ public class PlayerCombat : MonoBehaviour
     private Vector2 startPos;
     private Vector2 currPos;
 
-    private float lerpTime = .5f;
+    private float lerpTime = 1f;
     private float currTime;
         
     private SpriteRenderer spriteRenderer;
