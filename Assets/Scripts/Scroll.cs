@@ -16,7 +16,7 @@ public class Scroll : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {   
         if(PublicVars.speed < 0.75f && PublicVars.speed !=0f && PublicVars.canAccel == true)
         {
