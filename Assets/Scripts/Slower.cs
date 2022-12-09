@@ -22,7 +22,7 @@ public class Slower : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector2 newPos = transform.position;
         newPos.x -= PublicVars.objectSpeed;
