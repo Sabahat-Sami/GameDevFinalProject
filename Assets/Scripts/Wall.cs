@@ -21,7 +21,7 @@ public class Wall : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //_rigidbody.velocity = new Vector2(-PublicVars.speed * PublicVars.image_offset, 0);
         Vector2 newPos = transform.position;
