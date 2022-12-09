@@ -110,7 +110,7 @@ public class ObstacleManager : MonoBehaviour
         GameObject wall = Instantiate(walls, location, Quaternion.identity);
         float newSize = Random.Range(1f, 2.51f);
         wall.transform.localScale = new Vector2(wall.transform.localScale.x, newSize);
-        wall.transform.position = new Vector2(wall.transform.position.x, location.y + (newSize - 1.5f)/2f);
+        wall.transform.position = new Vector2(wall.transform.position.x, location.y + (newSize - 1.7f)/2f);
     }
 
     void genGround()

@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 241436969506508004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.61, y: -2.58, z: 0}
-  m_LocalScale: {x: 0.9499176, y: 1.0181475, z: 1}
+  m_LocalScale: {x: 1.3583058, y: 2.1229806, z: 1.4299197}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 241436971423076396}
@@ -129,7 +129,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   currScoreText: {fileID: 0}
+  currJumpText: {fileID: 0}
+  scoreMultiplier: {fileID: 0}
+  canAddScore: 1
   jumpSound: {fileID: 8300000, guid: cde6db58dbb093a4680207a45c6f6542, type: 3}
+  fallSound: {fileID: 8300000, guid: a2de6d6aa2038844da4d8b2b1e8efd4f, type: 3}
 --- !u!114 &241436969506508007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +149,7 @@ MonoBehaviour:
   enemy: {fileID: 0}
   recoveryTimerRunning: 0
   canHeal: 0
+  newSprite: {fileID: 21300000, guid: e8122e94097328749a0c4ef4ebc1ce56, type: 3}
 --- !u!95 &241436969506508029
 Animator:
   serializedVersion: 4
@@ -301,7 +306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241436971423076397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.276, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

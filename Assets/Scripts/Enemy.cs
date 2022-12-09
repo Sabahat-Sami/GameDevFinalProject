@@ -10,13 +10,7 @@ public class Enemy : MonoBehaviour
         {
             PublicVars.speed = 0f;
             PublicVars.objectSpeed = 0f;
-            StartCoroutine(Death());
+            StartCoroutine(other.gameObject.GetComponent<PlayerCombat>().Death());
         }
-    }
-
-    IEnumerator Death()
-    {
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("PlayAgain");
     }
 }
