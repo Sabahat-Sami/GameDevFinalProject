@@ -10,12 +10,14 @@ public class Wall : MonoBehaviour
 
     public AudioClip hitWall;
 
+    private SpriteRenderer spriteRenderer;
+    public Sprite newSprite;
+
     // Start is called before the first frame update
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        //_rigidbody = GetComponent<Rigidbody2D>();
-        //_rigidbody.velocity = new Vector2(-PublicVars.speed * PublicVars.image_offset, 0);
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,15 +33,11 @@ public class Wall : MonoBehaviour
         if(other.tag == "Player")
         {
             _audioSource.PlayOneShot(hitWall);
+            spriteRenderer.sprite = newSprite; 
+
             PublicVars.speed = 0f;
             PublicVars.objectSpeed = 0f;
-            StartCoroutine(Death());
+            StartCoroutine(other.gameObject.GetComponent<PlayerCombat>().Death());
         }
-    }
-
-    IEnumerator Death()
-    {
-        yield return new WaitForSeconds(0.8f);
-        SceneManager.LoadScene("PlayAgain");
     }
 }

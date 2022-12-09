@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -16,11 +17,15 @@ public class PlayerCombat : MonoBehaviour
 
     private float lerpTime = .5f;
     private float currTime;
+        
+    private SpriteRenderer spriteRenderer;
+    public Sprite newSprite;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         recoveryTimer = recoveryTime();
         startPos = enemy.transform.position;
         midPos = (enemy.transform.position + transform.position)/2;
@@ -95,5 +100,13 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator recoveryTime(){
         yield return new WaitForSeconds(7f);
         canHeal = true;
+    }
+
+    public IEnumerator Death()
+    {
+        gameObject.GetComponent<Animator>().enabled = false;
+        spriteRenderer.sprite = newSprite; 
+        yield return new WaitForSeconds(0.8f);
+        SceneManager.LoadScene("PlayAgain");
     }
 }

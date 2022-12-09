@@ -9,10 +9,16 @@ public class Slower : MonoBehaviour
 
     public AudioClip gotHit;
 
+    private SpriteRenderer spriteRenderer;
+    public Sprite newSprite;
+
+
     // Start is called before the first frame update
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -29,6 +35,11 @@ public class Slower : MonoBehaviour
             _audioSource.PlayOneShot(gotHit);
             PublicVars.speed = PublicVars.speed/2;
             other.GetComponent<PlayerCombat>().takeHit();
+
+            gameObject.GetComponent<Animator>().enabled = false;
+            _rigidbody.gravityScale = 1;
+            spriteRenderer.sprite = newSprite; 
+
         }
     }
 }
