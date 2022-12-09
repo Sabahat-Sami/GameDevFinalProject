@@ -42,7 +42,6 @@ public class Wall : MonoBehaviour
 
         else if(other.tag == "Enemy")
         {
-            _audioSource.PlayOneShot(hitWall);
             spriteRenderer.sprite = newSprite; 
         }
     }
