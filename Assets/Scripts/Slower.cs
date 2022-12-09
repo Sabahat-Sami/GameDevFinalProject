@@ -43,7 +43,6 @@ public class Slower : MonoBehaviour
         }
         else if(other.tag == "Enemy")
         {
-            _audioSource.PlayOneShot(gotHit);
             gameObject.GetComponent<Animator>().enabled = false;
             _rigidbody.gravityScale = 1;
             spriteRenderer.sprite = newSprite; 
